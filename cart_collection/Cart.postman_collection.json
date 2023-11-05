@@ -1,0 +1,1019 @@
+{
+	"info": {
+		"_postman_id": "d38c1664-b863-4113-8d16-c9ec6a23da7a",
+		"name": "Cart",
+		"description": "In this collection all the APIs of fakestoreapi related to cart has been covered.\n\n# **APIs tested:**\n\n- GET - 6 API\n- POST - 1 API\n- PUT - 1 API\n- PATCH - 1 API\n- DELETE - 1 API\n    \n\n# **Features covered:**\n\n- Data driven testing\n- JSON Schema Validations\n- Expected response data validations\n    \n\n# Variables used:\n\n- Collection variable\n    \n- Environment variables\n    \n- Global variables\n    \n- Built-in variables",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30663117",
+		"_collection_link": "https://www.postman.com/crimson-shadow-36766/workspace/fakestore-api/collection/30663117-d38c1664-b863-4113-8d16-c9ec6a23da7a?action=share&source=collection_link&creator=30663117"
+	},
+	"item": [
+		{
+			"name": "get all cart items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const json_response = pm.response.json();\r",
+							"const expected_schema = {\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"id\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"userId\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"date\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"products\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": [\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"productId\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"quantity\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"productId\",\r",
+							"            \"quantity\"\r",
+							"          ]\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"productId\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"quantity\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"productId\",\r",
+							"            \"quantity\"\r",
+							"          ]\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"productId\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"quantity\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"productId\",\r",
+							"            \"quantity\"\r",
+							"          ]\r",
+							"        }\r",
+							"      ]\r",
+							"    },\r",
+							"    \"__v\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"id\",\r",
+							"    \"userId\",\r",
+							"    \"date\",\r",
+							"    \"products\",\r",
+							"    \"__v\"\r",
+							"  ]\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Response is an array and not empty\", function(){\r",
+							"    pm.expect(json_response).to.be.a(\"array\").and.is.not.empty;\r",
+							"});\r",
+							"pm.test(\"Expected JSON schema validation\", function(){\r",
+							"    json_response.forEach(function(item){\r",
+							"        pm.expect(item).to.be.jsonSchema(expected_schema);\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}carts",
+					"host": [
+						"{{base_url}}carts"
+					]
+				},
+				"description": "In this GET request we are getting all the cart items returned so we are validating :\n\n- successful response\n- JSON schema validation\n- Returned response should be an array and not empty"
+			},
+			"response": []
+		},
+		{
+			"name": "get single cart item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const json_response = pm.response.json();\r",
+							"const expected_schema = {\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"id\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"userId\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"date\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"products\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": [\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"productId\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"quantity\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"productId\",\r",
+							"            \"quantity\"\r",
+							"          ]\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"productId\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"quantity\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"productId\",\r",
+							"            \"quantity\"\r",
+							"          ]\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"productId\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"quantity\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"productId\",\r",
+							"            \"quantity\"\r",
+							"          ]\r",
+							"        }\r",
+							"      ]\r",
+							"    },\r",
+							"    \"__v\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"id\",\r",
+							"    \"userId\",\r",
+							"    \"date\",\r",
+							"    \"products\",\r",
+							"    \"__v\"\r",
+							"  ]\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Response is an object and not empty\", function(){\r",
+							"    pm.expect(json_response).to.be.a(\"object\").and.is.not.empty;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Expected product validation\", function(){\r",
+							"    pm.expect(json_response.id).to.be.eql(parseInt(pm.collectionVariables.get(\"cart_id\")));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Expected JSON schema validation\", function(){\r",
+							"        pm.expect(json_response).to.be.jsonSchema(expected_schema);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}carts/{{cart_id}}",
+					"host": [
+						"{{base_url}}carts"
+					],
+					"path": [
+						"{{cart_id}}"
+					]
+				},
+				"description": "In this GET request we are getting single the cart item returned so we are validating :\n\n- successful response\n    \n- JSON schema validation\n    \n- Returned response should be a single object and not empty\n    \n- Expected cart item only returned comparing with provided cart id"
+			},
+			"response": []
+		},
+		{
+			"name": "get limited cart items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const json_response = pm.response.json();\r",
+							"const expected_schema = {\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"id\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"userId\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"date\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"products\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": [\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"productId\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"quantity\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"productId\",\r",
+							"            \"quantity\"\r",
+							"          ]\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"productId\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"quantity\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"productId\",\r",
+							"            \"quantity\"\r",
+							"          ]\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"productId\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"quantity\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"productId\",\r",
+							"            \"quantity\"\r",
+							"          ]\r",
+							"        }\r",
+							"      ]\r",
+							"    },\r",
+							"    \"__v\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"id\",\r",
+							"    \"userId\",\r",
+							"    \"date\",\r",
+							"    \"products\",\r",
+							"    \"__v\"\r",
+							"  ]\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Response is an array and not empty\", function(){\r",
+							"    pm.expect(json_response).to.be.a(\"array\").and.is.not.empty;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Expected JSON schema validation\", function(){\r",
+							"    json_response.forEach(function(item) {\r",
+							"        pm.expect(item).to.be.jsonSchema(expected_schema);\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Cart item limit validation\", function(){\r",
+							"    pm.expect(json_response.length).to.be.eql(parseInt(pm.collectionVariables.get(\"limit\")));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}carts?limit={{limit}}",
+					"host": [
+						"{{base_url}}carts"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "{{limit}}"
+						}
+					]
+				},
+				"description": "In this GET request we are getting array of cart items returned so we are validating :\n\n- successful response\n- JSON schema validation\n- Returned response should be an array and not empty\n- Expected number of cart items are returned according to given limit"
+			},
+			"response": []
+		},
+		{
+			"name": "get sorted cart items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const json_response = pm.response.json();\r",
+							"const expected_schema = {\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"id\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"userId\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"date\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"products\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": [\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"productId\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"quantity\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"productId\",\r",
+							"            \"quantity\"\r",
+							"          ]\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"productId\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"quantity\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"productId\",\r",
+							"            \"quantity\"\r",
+							"          ]\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"productId\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"quantity\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"productId\",\r",
+							"            \"quantity\"\r",
+							"          ]\r",
+							"        }\r",
+							"      ]\r",
+							"    },\r",
+							"    \"__v\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"id\",\r",
+							"    \"userId\",\r",
+							"    \"date\",\r",
+							"    \"products\",\r",
+							"    \"__v\"\r",
+							"  ]\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Response is an array and not empty\", function(){\r",
+							"    pm.expect(json_response).to.be.a(\"array\").and.is.not.empty;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Expected JSON schema validation\", function(){\r",
+							"    json_response.forEach(function(item) {\r",
+							"        pm.expect(item).to.be.jsonSchema(expected_schema);\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate returned items are in sorted order\", function(){\r",
+							"    sorting_order = pm.collectionVariables.get(\"sort\");\r",
+							"    if(sorting_order == 'asc'){\r",
+							"        pm.expect(json_response[0].id).to.be.eql(1)\r",
+							"    }else{\r",
+							"        pm.expect(json_response[0].id).to.be.eql(7)\r",
+							"    };\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}carts?sort={{sort}}",
+					"host": [
+						"{{base_url}}carts"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "{{sort}}"
+						}
+					]
+				},
+				"description": "In this GET request we are getting array of cart items returned so we are validating :\n\n- successful response\n    \n- JSON schema validation\n    \n- Returned response should be an array and not empty\n    \n- Expected sorting order of cart items are returned according to given sort order asc or desc"
+			},
+			"response": []
+		},
+		{
+			"name": "get cart items in date range",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}carts?startdate=2020-01-01&enddate=2020-01-30",
+					"host": [
+						"{{base_url}}carts"
+					],
+					"query": [
+						{
+							"key": "startdate",
+							"value": "2020-01-01"
+						},
+						{
+							"key": "enddate",
+							"value": "2020-01-30"
+						}
+					]
+				},
+				"description": "In this GET request we are getting array of cart items returned so we are validating :\n\n- successful response\n    \n- JSON schema validation\n    \n- Returned response should be an array and not empty\n    \n- Expected cart items are returned according to given date range"
+			},
+			"response": []
+		},
+		{
+			"name": "get user specific cart items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const json_response = pm.response.json();\r",
+							"const expected_schema = {\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"id\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"userId\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"date\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"products\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": [\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"productId\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"quantity\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"productId\",\r",
+							"            \"quantity\"\r",
+							"          ]\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"productId\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"quantity\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"productId\",\r",
+							"            \"quantity\"\r",
+							"          ]\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"productId\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"quantity\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"productId\",\r",
+							"            \"quantity\"\r",
+							"          ]\r",
+							"        }\r",
+							"      ]\r",
+							"    },\r",
+							"    \"__v\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"id\",\r",
+							"    \"userId\",\r",
+							"    \"date\",\r",
+							"    \"products\",\r",
+							"    \"__v\"\r",
+							"  ]\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Response is an array and not empty\", function(){\r",
+							"    pm.expect(json_response).to.be.a(\"array\").and.is.not.empty;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Expected JSON schema validation\", function(){\r",
+							"    json_response.forEach(function(item) {\r",
+							"        pm.expect(item).to.be.jsonSchema(expected_schema);\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"only cart items of the given user is returned\", function(){\r",
+							"    let user_id = 4 // pm.collectionVariables.get(\"user_id\")\r",
+							"    json_response.forEach(function(item) {\r",
+							"        pm.expect(item.userId).to.be.eql(user_id);\r",
+							"    }); \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}carts/user/4",
+					"host": [
+						"{{base_url}}carts"
+					],
+					"path": [
+						"user",
+						"4"
+					]
+				},
+				"description": "In this GET request we are getting array of cart items returned so we are validating :\n\n- successful response\n    \n- JSON schema validation\n    \n- Returned response should be an array and not empty\n    \n- Expected cart items are returned according to given users id"
+			},
+			"response": []
+		},
+		{
+			"name": "add to cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const json_response = pm.response.json();\r",
+							"const expected_schema = {\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"id\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"userId\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"date\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"products\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": [\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"productId\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"quantity\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"productId\",\r",
+							"            \"quantity\"\r",
+							"          ]\r",
+							"        }\r",
+							"      ]\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"id\",\r",
+							"    \"userId\",\r",
+							"    \"date\",\r",
+							"    \"products\"\r",
+							"  ]\r",
+							"}\r",
+							"// Added product validation user id - product id and quantity\r",
+							"pm.test(\"Expected cart item validation\", function(){\r",
+							"    pm.expect(json_response.userId).to.be.eql(parseInt(pm.collectionVariables.get(\"user_id\")));\r",
+							"    pm.expect(json_response.products[0].productId).to.be.eql(parseInt(pm.collectionVariables.get(\"product_id\")));\r",
+							"    pm.expect(json_response.products[0].quantity).to.be.eql(parseInt(pm.collectionVariables.get(\"quantity\")));\r",
+							"});\r",
+							"// Products have length of 1 \r",
+							"pm.test(\"Only 1 product is added to cart\", function(){\r",
+							"    pm.expect(json_response.products.length).to.be.eql(1);\r",
+							"});\r",
+							"// Is an object and not empty\r",
+							"pm.test(\"response is an object and not empty validation\", function(){\r",
+							"    pm.expect(json_response).to.be.a('object').and.is.not.empty;\r",
+							"});\r",
+							"// JSON schema validation\r",
+							"pm.test(\"Expected JSON schema validation\", function(){\r",
+							"        pm.expect(json_response).to.be.jsonSchema(expected_schema);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\":{{user_id}},\r\n    \"date\":\"{{date}}\",\r\n    \"products\":\r\n    [\r\n        {\r\n            \"productId\":{{product_id}},\r\n            \"quantity\":{{quantity}}\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}carts",
+					"host": [
+						"{{base_url}}carts"
+					]
+				},
+				"description": "In this POSTrequest we are adding the data and getting object of cart item returned so we are validating :\n\n- successful response\n- JSON schema validation\n- Returned response should be an array and not empty\n- Expected cart item details are returned according to provided data"
+			},
+			"response": []
+		},
+		{
+			"name": "update cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const json_response = pm.response.json();\r",
+							"const expected_schema = {\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"id\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"userId\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"date\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"products\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": [\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"productId\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"quantity\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"productId\",\r",
+							"            \"quantity\"\r",
+							"          ]\r",
+							"        }\r",
+							"      ]\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"id\",\r",
+							"    \"userId\",\r",
+							"    \"date\",\r",
+							"    \"products\"\r",
+							"  ]\r",
+							"}\r",
+							"// Added product validation user id - product id and quantity\r",
+							"pm.test(\"Expected cart item validation\", function(){\r",
+							"    pm.expect(json_response.userId).to.be.eql(parseInt(pm.collectionVariables.get(\"user_id\")));\r",
+							"    pm.expect(json_response.products[0].productId).to.be.eql(parseInt(pm.collectionVariables.get(\"product_id\")));\r",
+							"    pm.expect(json_response.products[0].quantity).to.be.eql(parseInt(pm.collectionVariables.get(\"quantity\")));\r",
+							"});\r",
+							"// Products have length of 1 \r",
+							"pm.test(\"Only 1 product is added to cart\", function(){\r",
+							"    pm.expect(json_response.products.length).to.be.eql(1);\r",
+							"});\r",
+							"// Is an object and not empty\r",
+							"pm.test(\"response is an object and not empty validation\", function(){\r",
+							"    pm.expect(json_response).to.be.a('object').and.is.not.empty;\r",
+							"});\r",
+							"// JSON schema validation\r",
+							"pm.test(\"Expected JSON schema validation\", function(){\r",
+							"        pm.expect(json_response).to.be.jsonSchema(expected_schema);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\":{{user_id}},\r\n    \"date\":\"{{date}}\",\r\n    \"products\":\r\n    [\r\n        {\r\n            \"productId\":{{product_id}},\r\n            \"quantity\":{{quantity}}\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}carts/{{cart_id}}",
+					"host": [
+						"{{base_url}}carts"
+					],
+					"path": [
+						"{{cart_id}}"
+					]
+				},
+				"description": "In this PUT request we are updating cart and getting object of cart item returned so we are validating :\n\n- successful response\n- JSON schema validation\n- Returned response should be an object and not empty\n- Expected cart item details are returned according to updated data"
+			},
+			"response": []
+		},
+		{
+			"name": "partial update cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const json_response = pm.response.json();\r",
+							"const expected_schema = {\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"id\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"userId\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"date\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"products\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": [\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"productId\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"quantity\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"productId\",\r",
+							"            \"quantity\"\r",
+							"          ]\r",
+							"        }\r",
+							"      ]\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"id\",\r",
+							"    \"userId\",\r",
+							"    \"date\",\r",
+							"    \"products\"\r",
+							"  ]\r",
+							"}\r",
+							"// Added product validation user id - product id and quantity\r",
+							"pm.test(\"Expected cart item validation\", function(){\r",
+							"    pm.expect(json_response.userId).to.be.eql(parseInt(pm.collectionVariables.get(\"user_id\")));\r",
+							"    pm.expect(json_response.products[0].productId).to.be.eql(parseInt(pm.collectionVariables.get(\"product_id\")));\r",
+							"    pm.expect(json_response.products[0].quantity).to.be.eql(parseInt(pm.collectionVariables.get(\"quantity\")));\r",
+							"});\r",
+							"// Products have length of 1 \r",
+							"pm.test(\"Only 1 product is added to cart\", function(){\r",
+							"    pm.expect(json_response.products.length).to.be.eql(1);\r",
+							"});\r",
+							"// Is an object and not empty\r",
+							"pm.test(\"response is an object and not empty validation\", function(){\r",
+							"    pm.expect(json_response).to.be.a('object').and.is.not.empty;\r",
+							"});\r",
+							"// JSON schema validation\r",
+							"pm.test(\"Expected JSON schema validation\", function(){\r",
+							"        pm.expect(json_response).to.be.jsonSchema(expected_schema);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\":{{user_id}},\r\n    \"date\":\"{{date}}\",\r\n    \"products\":\r\n    [\r\n        {\r\n            \"productId\":{{product_id}},\r\n            \"quantity\":{{quantity}}\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}carts/6",
+					"host": [
+						"{{base_url}}carts"
+					],
+					"path": [
+						"6"
+					]
+				},
+				"description": "In this PATCH request we are updating cart and getting object of cart item returned so we are validating :\n\n- successful response\n    \n- JSON schema validation\n    \n- Returned response should be an object and not empty\n    \n- Expected cart item details are returned according to updated data"
+			},
+			"response": []
+		},
+		{
+			"name": "delete cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const json_response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"response is an object and not empty validation\", function(){\r",
+							"    pm.expect(json_response).to.be.a('object').and.is.not.empty;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Expected product deleted validation\", function(){\r",
+							"    pm.expect(json_response.id).to.be.eql(parseInt(pm.collectionVariables.get(\"cart_id\")));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}carts/{{cart_id}}",
+					"host": [
+						"{{base_url}}carts"
+					],
+					"path": [
+						"{{cart_id}}"
+					]
+				},
+				"description": "In this DELETE request we are deleting cart and getting object of cart item returned so we are validating :\n\n- successful response\n    \n- JSON schema validation\n    \n- Returned response should be an object and not empty\n    \n- Expected cart item details are returned according to deleted data"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"const limit = pm.variables.replaceIn('{{$randomInt}}') % 7 + 1;",
+					"pm.collectionVariables.set(\"limit\", limit);",
+					"",
+					"const orders = [\"desc\", \"asc\"];",
+					"pm.collectionVariables.set(\"sort\",  orders[_.random(orders.lenght)]);",
+					"pm.collectionVariables.set(\"cart_id\", pm.iterationData.get(\"cart_id\"));",
+					"",
+					"pm.collectionVariables.set(\"product_id\", pm.iterationData.get(\"product_id\"));",
+					"pm.collectionVariables.set(\"user_id\", pm.iterationData.get(\"user_id\"));",
+					"pm.collectionVariables.set(\"quantity\", pm.iterationData.get(\"quantity\"));",
+					"pm.collectionVariables.set(\"date\", pm.iterationData.get(\"date\"));"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"successful response validation\", function(){",
+					"    pm.response.to.have.status(200)",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "cart_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "user_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "date",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "quantity",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "limit",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "sort",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "product_id",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
